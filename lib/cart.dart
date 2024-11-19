@@ -9,6 +9,7 @@ class CartView extends StatefulWidget {
 
 class _CartViewState extends State<CartView> {
   var _count = 0;
+  var _count2 = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +67,7 @@ class _CartViewState extends State<CartView> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 190.0),
+                    padding: const EdgeInsets.only(left: 180.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -126,7 +127,7 @@ class _CartViewState extends State<CartView> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 190.0),
+                    padding: const EdgeInsets.only(left: 180.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -137,16 +138,16 @@ class _CartViewState extends State<CartView> {
                             icon: const Icon(Icons.add),
                             onPressed: () {
                               setState(() {
-                                _count += 1;
+                                _count2 += 1;
                               });
                             },
                           ),
-                          Text(_count.toString()),
+                          Text(_count2.toString()),
                           IconButton(
                             icon: const Icon(Icons.remove),
                             onPressed: () {
                               setState(() {
-                                _count -= 1;
+                                _count2 -= 1;
                               });
                             },
                           ),

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "398350844413",
+    "project_id": "fir-project-2763d",
+    "storage_bucket": "fir-project-2763d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398350844413:android:d9559c36638e5d25fe1994",
+        "android_client_info": {
+          "package_name": "com.example.fff"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz5o5WYKPwhwbqIqKkJzHrqKLpcG6Zh_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398350844413:android:88890537027fc2a4fe1994",
+        "android_client_info": {
+          "package_name": "com.example.medical"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz5o5WYKPwhwbqIqKkJzHrqKLpcG6Zh_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,37 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:medical/Signup.dart';
-import 'package:medical/navigation.dart';
+import 'package:medical/Login.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends State<SignUpView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  login() async {
+  register() async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passController.text,
       );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const NavigatorView()),
-      );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
       }
+    } catch (e) {
+      print(e.toString());
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,37 +82,19 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                    onPressed: () {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const NavigatorView()),
-                      // );
-                      login();
-                    },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    child: const Text(
-                      "CONTINUE",
-                      style: TextStyle(color: Colors.white),
-                    ))),
-            const Text(""),
-            SizedBox(
-                width: 300,
-                child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async{
                       Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUpView()),
-                      );
-                    },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    child: const Text(
-                      "Dont Have account",
-                      style: TextStyle(color: Colors.white),
-                    )))
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginView()),
+                          
+                    );
+                    await register();
+                  },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue),
+                    child: const Text("CONTINUE",style: TextStyle(color: Colors.white),))),
+                    const Text(""),
           ],
         ),
       ),
